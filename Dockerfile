@@ -15,7 +15,7 @@ RUN dpkg --add-architecture i386 && \
 # Installs Android SDK
 ENV ANDROID_SDK_FILENAME android-sdk_r24.4.1-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-23,android-24,android-25  
+ENV ANDROID_API_LEVELS android-23,android-24,android-25,android-26,android-27  
 ENV ANDROID_HOME /opt/android-sdk-linux
 #ENV ANDROID_HOME /home/likewise-open/FRAMGIA/nguyen.viet.manh/Android/Sdk
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
@@ -48,7 +48,16 @@ RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u
     ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-24.0.3 && \
     ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-25.0.0 && \
     ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-25.0.1 && \
-    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-25.0.2 
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-25.0.2 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-25.0.3 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-26.0.0 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-26.0.1 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-26.0.2 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-26.0.3 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-27.0.0 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-27.0.1 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-27.0.2 && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk -u -a --filter build-tools-27.0.3
 
 # Update Android licenses
 COPY licenses /opt/android-sdk-linux/licenses
@@ -59,7 +68,7 @@ RUN curl -o /usr/bin/framgia-ci https://raw.githubusercontent.com/framgia/ci-rep
     chmod +x /usr/bin/framgia-ci
 
 # Install Gradle
-ENV GRADLE_VERSION 3.2.1
+ENV GRADLE_VERSION 4.1
 
 RUN cd /usr/bin && \
     wget -q https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
